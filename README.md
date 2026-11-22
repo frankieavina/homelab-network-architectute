@@ -35,6 +35,7 @@ The initial implementation will prioritize VLANs 20 and 30 only after confirming
 ## Repository structure
 
 - `docs/` — architecture, topology, addressing, VLAN, and policy documentation
+- [Proposed logical VLAN architecture](docs/proposed-logical-vlan-architecture.md) — logical segmentation diagram and implementation constraints
 - `diagrams/` — network diagrams and visual references
 - `CHANGELOG.md` — meaningful architecture and implementation changes
 
