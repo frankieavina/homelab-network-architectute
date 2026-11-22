@@ -2,28 +2,31 @@
 
 ## Overview
 
-The current physical layout is centered on the UniFi Cloud Gateway Ultra and NETGEAR GC110P managed switch.
+The current physical layout is centered on the UniFi Cloud Gateway Ultra and NETGEAR GC110P managed switch. The diagram below represents the **current physical connections**, not the proposed VLAN design.
 
-```text
-                         Internet
-                            |
-                    UniFi Cloud Gateway
-                            |
-                       GC110P Main
-                      Managed Switch
-          ________________|________________________
-         |        |        |       |       |       |
-       Port 1   Port 2   Port 3  Port 4  Port 5  Port 6
-         |        |        |       |       |       |
-      Proxmox   Pi 5    Unraid   Deco   Gateway  GS305E
-                                      uplink    Bedroom
-                                                  |
-                                      ____________|________
-                                     |                     |
-                                   Port 2                Port 3
-                                     |                     |
-                                    PS5                    PC
+## Current physical topology
+
+```mermaid
+flowchart TB
+    INTERNET((Internet)) --- UCG["UniFi Cloud Gateway Ultra<br/>Router / Firewall / DHCP"]
+    UCG ---|"LAN uplink"| CORE["NETGEAR GC110P<br/>Core Managed Switch"]
+
+    CORE ---|"Port 1"| PROX["Lenovo ThinkCentre M720q<br/>Proxmox"]
+    CORE ---|"Port 2"| PI["Raspberry Pi 5<br/>Network Services"]
+    CORE ---|"Port 3"| UNRAID["Unraid Server<br/>Storage / VMs"]
+    CORE ---|"Port 4"| DECO["TP-Link Deco W6000<br/>Main AP"]
+    CORE ---|"Port 6"| BED["NETGEAR GS305E<br/>Bedroom Switch"]
+
+    DECO -. "Wireless mesh" .-> NODE["TP-Link Deco W6000<br/>Living Room Mesh Node"]
+
+    BED ---|"Port 2"| PS5["PlayStation 5"]
+    BED ---|"Port 3"| PC["Desktop PC"]
+
+    WIFI["Wireless clients"] -. "Wi-Fi" .-> DECO
+    WIFI2["Wireless clients"] -. "Wi-Fi" .-> NODE
 ```
+
+**Important port detail:** The UniFi gateway uplink connects to GC110P physical port 5. The diagram shows the gateway-to-core-switch link; the switch-side connection is port 5.
 
 ## Main switch: NETGEAR GC110P
 
@@ -63,6 +66,7 @@ The switch UI labels ports using its interface naming convention (for example, g
 - The GS305E currently has VLAN 1 as the only configured VLAN, with all five ports members and PVID 1.
 - The GC110P has VLAN 1 and the factory Auto-Video VLAN 4089 entry. Auto-Video is disabled and is not part of the proposed segmentation.
 - No additional VLANs have been created.
+- The current wired and wireless network is a single LAN; the topology does not imply separate VLANs for the wireless SSIDs.
 
 ## Diagram maintenance
 
