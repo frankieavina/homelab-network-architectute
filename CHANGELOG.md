@@ -11,3 +11,9 @@ Significant documentation and network architecture changes are recorded here.
 - Selected Option B: keep infrastructure management on VLAN 1 during initial segmentation.
 - Recorded the Deco W6000 limitation: per-SSID VLAN tagging is not verified.
 - No network configuration changes were made as part of this documentation milestone.
+
+## 2026-11-22
+
+- Added a proposed logical VLAN architecture diagram, clearly separated from the verified current physical topology.
+- Linked the logical VLAN diagram from the repository README.
+- Documented deployment constraints, including the unverified Deco per-SSID VLAN capability and the need to define endpoint access paths before VLAN rollout.
