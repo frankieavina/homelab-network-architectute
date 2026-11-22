@@ -38,6 +38,16 @@ The initial implementation will prioritize VLANs 20 and 30 only after confirming
 - `diagrams/` — network diagrams and visual references
 - `CHANGELOG.md` — meaningful architecture and implementation changes
 
+## Related homelab project
+
+The Raspberry Pi 5 provides several supporting network services for this environment, including Pi-hole DNS, Uptime Kuma monitoring, CUPS printing, system health monitoring, and automated Restic backups to Unraid.
+
+Those services are documented separately to keep each project focused and avoid duplicating implementation details:
+
+- [Homelab Raspberry Pi Services](https://github.com/frankieavina/homelab-raspberry-pi-services) — service deployment, monitoring, maintenance, and backup documentation.
+
+Together, these repositories document both the network infrastructure and the services operating on it.
+
 ## Documentation principles
 
 - Distinguish clearly between **current state**, **proposed design**, and **implemented configuration**.
