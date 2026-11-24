@@ -23,3 +23,9 @@ Significant documentation and network architecture changes are recorded here.
 - Recorded the decision to retain the existing Deco W6000 access points in AP mode and defer wireless VLAN alternatives or upgrades.
 - Clarified that existing Guest and IoT SSIDs are not confirmed as VLAN-isolated networks.
 - No wireless or network configuration changes were made.
+
+## 2026-11-24
+
+- Documented the verified Proxmox host network baseline: physical interface `nic0`, bridge `vmbr0`, VLAN-aware mode disabled, and DHCP-reserved management addressing.
+- Updated the device inventory and IP-addressing documentation.
+- No Proxmox, switch, or gateway configuration changes were made.
