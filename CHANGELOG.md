@@ -17,3 +17,9 @@ Significant documentation and network architecture changes are recorded here.
 - Added a proposed logical VLAN architecture diagram, clearly separated from the verified current physical topology.
 - Linked the logical VLAN diagram from the repository README.
 - Documented deployment constraints, including the unverified Deco per-SSID VLAN capability and the need to define endpoint access paths before VLAN rollout.
+
+## 2026-11-23
+
+- Recorded the decision to retain the existing Deco W6000 access points in AP mode and defer wireless VLAN alternatives or upgrades.
+- Clarified that existing Guest and IoT SSIDs are not confirmed as VLAN-isolated networks.
+- No wireless or network configuration changes were made.
