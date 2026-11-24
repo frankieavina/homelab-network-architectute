@@ -55,6 +55,11 @@ The Unraid port should remain on the existing network during the initial rollout
 
 The current Deco W6000 system has not been verified to map individual SSIDs to 802.1Q VLANs. Therefore, it cannot currently be used as the assumed access path for VLAN 20 or VLAN 30. Do not assign those VLANs to the Deco switch port or describe its SSIDs as VLAN-isolated without new authoritative evidence.
 
+
+### Current wireless decision
+
+The Deco W6000 system will remain in Access Point mode for now. Both Deco units and the existing SSIDs (Rocky's Net, Guest Network, and IoT Network) will be retained. Replacing or adding a VLAN-capable access point is deferred until a later investigation. Until per-SSID VLAN tagging is verified, the existing Guest and IoT SSIDs must not be represented as separate VLANs or as VLAN-isolated networks. The main Deco remains connected to GC110P physical port 4 on the existing VLAN 1 network.
+
 ## Firewall policy objectives
 
 The following are design objectives, not configured rules:
