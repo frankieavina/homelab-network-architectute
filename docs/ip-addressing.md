@@ -14,7 +14,7 @@ The homelab currently uses a single private IPv4 LAN:
 - DHCP reservations are used for infrastructure devices and servers that benefit from predictable addresses.
 - No additional user-created VLAN networks have been deployed.
 
-The existing network includes reservations for the gateway, managed switches, Unraid server, Raspberry Pi, and Deco access point / mesh node. The Proxmox host's final address assignment is not recorded in this public document.
+The existing network includes reservations for the gateway, managed switches, Unraid server, Raspberry Pi, Deco access point / mesh node, and Proxmox host. The Proxmox host currently receives its management address through a DHCP reservation from the UniFi gateway.
 
 ## Address assignment approach
 
@@ -47,22 +47,7 @@ The proposed VLAN 10 management network is intentionally deferred. The initial a
 - The UniFi Cloud Gateway Ultra currently provides DHCP for the LAN.
 - Pi-hole runs on the Raspberry Pi and provides DNS filtering for the current network.
 - If Guest or IoT networks are introduced, their clients will need an explicitly permitted path to the DNS service.
-- Firewall policy should allow only the DNS traffic required to reach Pi-hole (typically UDP and TCP port 53), rather than broadly permitting access to the trusted LAN.
 - DHCP scope, gateway, DNS server, and lease settings should be defined separately for each new VLAN network.
-
-## Future firewall policy objectives
-
-| Source network | Destination | Intended policy |
-|---|---|---|
-| Guest | Internet | Allow required internet access |
-| Guest | Trusted LAN / Management | Deny by default |
-| IoT | Internet | Allow only as required |
-| IoT | Trusted LAN / Management | Deny by default, with narrowly scoped exceptions |
-| Trusted LAN | Infrastructure management | Allow for authorized administration |
-| Management | Network infrastructure | Allow authorized management traffic |
-| Guest / IoT | Pi-hole DNS | Permit only required DNS traffic if Pi-hole remains on the trusted network |
-
-These are policy objectives for a future implementation, not active firewall rules.
 
 ## Implementation dependencies and cautions
 
@@ -79,7 +64,7 @@ These are policy objectives for a future implementation, not active firewall rul
 - [x] Document the proposed VLAN and subnet strategy.
 - [ ] Create VLAN 10, 20, and 30 on the router.
 - [ ] Configure switch VLAN membership, tagging, and PVIDs.
-- [ ] Validate inter-VLAN firewall policy and DNS reachability.
+- [ ] Validate inter-VLAN behavior and DNS reachability.
 - [ ] Evaluate VLAN-capable wireless access point options if wireless segmentation is required.
 
 No network configuration changes are made by publishing this document.
