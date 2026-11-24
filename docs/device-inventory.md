@@ -20,7 +20,22 @@ This document records the physical and virtual infrastructure used in the homela
 |---|---|---|---|
 | Raspberry Pi | Raspberry Pi 5 | Network services and monitoring host, including Pi-hole DNS, Uptime Kuma, CUPS, system health monitoring, and scheduled backups | Operational |
 | NAS / virtualization server | Supermicro X11SCA motherboard, Intel Core i5-8500T, 32 GB DDR4 RAM | Unraid storage, Docker applications, and virtual machines | Operational; not necessarily powered on continuously |
-| Small-form-factor virtualization node | Lenovo ThinkCentre M720q, Intel Core i5-9500T, 16 GB RAM, 256 GB NVMe | Proxmox virtualization host | Proxmox installed; storage upgrade and further setup pending |
+| Small-form-factor virtualization node | Lenovo ThinkCentre M720q, Intel Core i5-9500T, 16 GB RAM, 256 GB NVMe | Proxmox virtualization host | Proxmox installed; further setup and storage upgrade pending |
+
+### Proxmox host network baseline
+
+The Proxmox host is currently connected to the existing default LAN (VLAN 1). Its management address is assigned through a DHCP reservation on the UniFi gateway.
+
+| Setting | Current value |
+|---|---|
+| Physical network interface | `nic0` |
+| Linux bridge | `vmbr0` |
+| Bridge port | `nic0` |
+| VLAN-aware bridge | Disabled |
+| Management addressing | DHCP reservation |
+| Default gateway | Existing LAN gateway |
+
+No VLAN-aware bridge configuration has been enabled. VLAN support on the Proxmox bridge is a future design consideration and has not been applied.
 
 ### Unraid server components
 
